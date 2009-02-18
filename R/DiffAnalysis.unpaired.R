@@ -3,12 +3,14 @@ function (fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.",
     fileOUT = "ListOfGenes.txt", fileDelete = "GenesOutOfAnalysis.txt", 
     procs = c("bonferroni", "BH"), alpha = c(0.05, 0.05), fileID = NULL, 
     function.trt = NULL, by.var = "ID", varmixt.meth = FALSE, 
-    header = TRUE, sep = "\t", sep.write = "\t", dec.write = ".", ...) 
+    header = TRUE, sep = "\t", sep.write = "\t", dec.write = ".", 
+    ...) 
 {
     if (length(alpha) != length(procs)) 
         break
     if (is.character(fileIN)) {
-        GenFic <- read.table(fileIN, header = header, sep = sep,...)
+        GenFic <- read.table(fileIN, header = header, sep = sep, 
+            ...)
     }
     else {
         GenFic <- fileIN
@@ -32,16 +34,17 @@ function (fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.",
     if (is.null(function.trt) == FALSE) 
         GenFic <- function.trt(GenFic, n, cond1, cond2, by.var)
     if (!is.null(fileID)) {
-        fichier2 <- read.table(fileID, header = header, sep = sep,...)
+        fichier2 <- read.table(fileID, header = header, sep = sep, 
+            ...)
         n <- length(union(names(fichier2), names(GenFic)[1:n]))
         GenFic <- merge(fichier2, GenFic, by = names(fichier2)[names(fichier2) %in% 
             names(GenFic)])
     }
     Fic1 <- GenFic[, grep(cond1, names(GenFic))]
     Fic2 <- GenFic[, grep(cond2, names(GenFic))]
-    NbObs1 <- length(indC1) - apply(1 * is.na(Fic1), 1, sum)
-    NbObs2 <- length(indC2) - apply(1 * is.na(Fic2), 1, sum)
-    don12 <- GenFic[unique(c(which(NbObs1 < 2), which(NbObs2 < 
+     NbObs1 <- length(indC1) - rowSums(1 * is.na(Fic1))
+     NbObs2 <- length(indC2) - rowSums(1 * is.na(Fic2))
+     don12 <- GenFic[unique(c(which(NbObs1 < 2), which(NbObs2 < 
         2))), ]
     cat("--------------------------------------------------------------------- \n")
     cat("Number of genes with less than two observations \n")
@@ -53,10 +56,10 @@ function (fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.",
         write.table(don12, file = "GenesOutOfAnalysis_NotEnoughObs.txt", 
             row.names = FALSE, sep = "\t", append = FALSE)
     }
-    VarByGene1 <- apply(as.data.frame(Fic1), MARGIN = 1, FUN = var, 
-        na.rm = TRUE)
-    VarByGene2 <- apply(as.data.frame(Fic2), MARGIN = 1, FUN = var, 
-        na.rm = TRUE)
+    
+   
+     VarByGene1 <- rowVars(as.data.frame(Fic1), na.rm = TRUE)
+    VarByGene2 <- rowVars(as.data.frame(Fic2), na.rm = TRUE)    
     IndVarNulle <- GenFic[unique(c(which(VarByGene1 == 0), which(VarByGene2 == 
         0))), ]
     cat("--------------------------------------------------------------------- \n")
@@ -84,10 +87,8 @@ function (fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.",
         VarByGene1 <- VarByGene1[-tmp]
         VarByGene2 <- VarByGene2[-tmp]
     }
-    Moy1 <- apply(GenFic[, grep(cond1, names(GenFic))], 1, mean, 
-        na.rm = TRUE)
-    Moy2 <- apply(GenFic[, grep(cond2, names(GenFic))], 1, mean, 
-        na.rm = TRUE)
+    Moy1 <- rowMeans(GenFic[, grep(cond1, names(GenFic))], na.rm = TRUE)
+    Moy2 <- rowMeans(GenFic[, grep(cond2, names(GenFic))], na.rm = TRUE)
     Delta <- Moy1 - Moy2
     pvalVartest = apply(as.matrix(1:nrow(GenFic)), 1, FUN = function(x) bartlett.test(list(as.numeric(GenFic[x, 
         grep(cond1, names(GenFic))]), as.numeric(GenFic[x, grep(cond2, 
@@ -176,10 +177,8 @@ function (fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.",
     sp2 <- ((N1 - 1) * CommonVar1b + (N2 - 1) * CommonVar2b)/(N1 + 
         N2 - 2)
     Denom <- sqrt(sp2 * (N1 + N2)/(N1 * N2))
-    Moy1 <- apply(GenFicm[, grep(cond1, names(GenFic))], 1, mean, 
-        na.rm = TRUE)
-    Moy2 <- apply(GenFicm[, grep(cond2, names(GenFic))], 1, mean, 
-        na.rm = TRUE)
+    Moy1 <- rowMeans(GenFicm[, grep(cond1, names(GenFic))], na.rm = TRUE)
+    Moy2 <- rowMeans(GenFicm[, grep(cond2, names(GenFic))], na.rm = TRUE)   
     DeltaMoy <- Moy1 - Moy2
     StatDeTest <- DeltaMoy/Denom
     PvalueRaw <- 2 * (1 - pnorm(abs(StatDeTest)))
@@ -223,7 +222,6 @@ function (fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.",
         cat("----------------------------------------- \n")
         if (length(groups) == 1) 
             groups[1] = length(PooledVar)
-        # for (i in 1:max(groups))
         for (i in 1:length(groups)) {
             cat("Group ", i, " \n")
             cat("   Number of genes ", groups[i], "\n")
@@ -239,19 +237,18 @@ function (fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.",
             pval.tmp = apply(as.matrix(1:resvm$nmixt), 1, FUN = function(x) pnorm(abs(teststatVM), 
                 mean = 0, sd = sqrt(resvm$vars[x]/resvm$VM)) * 
                 resvm$tau[, x])
-            pval.vm = apply(pval.tmp, 1, sum)
+            pval.vm <- rowSums(pval.tmp)
+            
         }
         pval.vm <- 2 * (1 - pval.vm)
         resultatVM <- sapply(procs, function(meth) p.adjust(pval.vm, 
             meth))
-        # a partir d'ici les PValueAdj sont maintenant note PvalueAdj (avec petit v)
         PvalueAdj <- data.frame(GenFic, Delta, VarByGene1, VarByGene2, 
             PooledVar, NbObs1, NbObs2, resvm$tau, VarianceVM = resvm$VM, 
             StatOfTestVM = teststatVM, PvalueVM = pval.vm, resultatVM)
         names(PvalueAdj) <- sub("X", "tau", names(PvalueAdj))
-        write.table(PvalueAdj, file = paste("VM-Complete", 
-            fileOUT, sep = ""), row.names = FALSE, sep = sep.write, 
-            dec = dec.write)
+        write.table(PvalueAdj, file = paste("VM-Complete", fileOUT, 
+            sep = ""), row.names = FALSE, sep = sep.write, dec = dec.write)
         diffrtVM <- apply(as.matrix(1:length(procs)), 1, FUN = function(x) PvalueAdj[which(PvalueAdj[, 
             grep(procs[x], names(PvalueAdj))] <= alpha[x]), ])
         for (compteur in 1:length(diffrtVM)) {
@@ -264,13 +261,11 @@ function (fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.",
             cat("-------------------------------------------------------------\n")
             if (nrow(fichierResVM) != 0) {
                 write.table(fichierResVM, file = paste(procs[compteur], 
-                  "-", alpha[compteur], "-VM-", fileOUT, 
-                  sep = ""), row.names = FALSE, sep = sep.write, 
-                  dec = dec.write)
+                  "-", alpha[compteur], "-VM-", fileOUT, sep = ""), 
+                  row.names = FALSE, sep = sep.write, dec = dec.write)
             }
         }
     }
     invisible(PvalueAdj)
- # (c) 2007 Institut National de la Recherche Agronomique
 }
 

@@ -20,7 +20,9 @@ function (fileIN = "resNorm.txt", n = 3, ind.array = NULL, name.A = "A",
     indM <- which(names(res) %in% paste(name.M,ind.array,sep=""))
     
     if (center){
-        MeanArray=apply(as.matrix(res[, indA]),2,mean,na.rm=TRUE)
+        ## Modif parallelisation
+        ##MeanArray=apply(as.matrix(res[, indA]),2,mean,na.rm=TRUE)
+        MeanArray <- colMeans(as.matrix(res[, indA]),na.rm=TRUE)
         MeanAll = mean(MeanArray)
         A = apply(as.matrix(1:length(indA)),1,FUN=function(x) res[, indA[x]]-MeanArray[x]+MeanAll)
         

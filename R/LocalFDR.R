@@ -1,5 +1,5 @@
 `LocalFDR` <-
-function(dataf=dataf,filegraph="Graphics",filedon="FDRFile",method=NULL,lambda0=0.5,smoothing="1",seuil=c(0.01,0.05,0.10,0.20),mm=c(3,5,15,NA)) {
+function(dataf = dataf, graph = TRUE, method = NULL,lambda0 = 0.5, smoothing="1", thres=c(0.01,0.05,0.10,0.20), mm=c(3,5,15,NA)) {
 
 # We ordered the pvalues
 dataord<-dataf[order(as.numeric(dataf[,2])),]
@@ -44,18 +44,18 @@ FDRvfit<-loess(FDRv[,2]~FDRv[,1],span=0.2)$fitted
 # Convention :  If mm[4]=NA then mm[4]=m0/4
 if (is.na(mm[4])) mm[4]<-round(m0/4)
 
-indice_u <- findInterval(FDRu[,2],seuil)+1
+indice_u <- findInterval(FDRu[,2],thres)+1
 FDRuL<-apply(as.matrix(FDRu[,2]),2,lissageMM,indice=indice_u,mm)
-indice_v <- findInterval(FDRv[,2],seuil)+1
+indice_v <- findInterval(FDRv[,2],thres)+1
 FDRvL<-apply(as.matrix(FDRv[,2]),2,lissageMM,indice=indice_v,mm)
-postscript(file=paste(filegraph,".ps",sep=""))
 
+if (graph){
+pdf(file=paste("LocalFDRGraph.pdf",sep=""))
 plot(FDRv[,1],FDRv[,2],main="",xlab="",ylab="",type="l")
 plot(FDRv[,1],FDRvL,main="",xlab="",ylab="",type="l",ylim=c(0,1.2))
-lines(FDRv[,1],FDRvfit,type="l",col=2)#
-
+lines(FDRv[,1],FDRvfit,type="l",col=2)
 dev.off()
-
+}
 FDRuL <- pmin(c(0,FDRuL,1),1)
 FDRvL <- pmin(c(0,FDRvL,1),1)
 out<-cbind(dataord,c("NA",FDRu[,2],"NA"),c("NA",FDRv[,2],"NA"),c("NA",FDRufit,"NA"),c("NA",FDRvfit,"NA"),FDRuL,FDRvL)
@@ -81,7 +81,7 @@ colnames(out)<-c("gene","pvalue","smoothed_PAVA_FDR")
 }
 }
 
-write.table(out,file=paste(filedon,".txt",sep=""),quote=TRUE,row.names=FALSE,sep="\t")
+write.table(out,file="LocalFDRFile.txt",quote=TRUE,row.names=FALSE,sep="\t")
 invisible(out)
 #  (c) 2007 Institut National de la Recherche Agronomique
 
