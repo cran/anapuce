@@ -1,4 +1,4 @@
-`lissageMM` <-
+lissageMM <-
 function(x,indice,mm) {
  
  tmp <- apply(as.matrix(c(1:5)),1,FUN=function(x,indice) unique(max(match(x,indice),0,na.rm=TRUE)),indice=indice)

@@ -1,9 +1,9 @@
-`DiffAnalysis` <-
+DiffAnalysis <-
 function (fileIN = "resNorm.txt", n = 3, ind.array = 1:2, name.A = "A", 
     name.M = "M.norm", fileOUT = "ListOfGenes.txt", fileDelete = "GenesOutOfAnalysis.txt", 
     procs = c("bonferroni", "BH"), alpha = c(0.05, 0.05), dyeswap = TRUE, 
     indDS = c(2), fileID = NULL, function.trt = NULL, by.var = "ID", 
-    varmixt.meth = FALSE, header = TRUE, sep = "\t", sep.write = "\t", 
+    varmixt.meth = TRUE, header = TRUE, sep = "\t", sep.write = "\t", 
     dec.write = ".", ...) 
 {
     if (length(alpha) != length(procs)) 

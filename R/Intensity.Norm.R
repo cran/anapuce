@@ -1,4 +1,4 @@
-`Intensity.Norm` <-
+Intensity.Norm <-
 function (fileIN = "resNorm.txt", n = 3, ind.array = NULL, name.A = "A", 
     name.M = "M.norm", sep="\t", center=FALSE,log.transf=TRUE, ...) 
 {

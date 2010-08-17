@@ -1,8 +1,8 @@
-`DiffAnalysis.unpaired` <-
+DiffAnalysis.unpaired <-
 function (fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.", 
     fileOUT = "ListOfGenes.txt", fileDelete = "GenesOutOfAnalysis.txt", 
     procs = c("bonferroni", "BH"), alpha = c(0.05, 0.05), fileID = NULL, 
-    function.trt = NULL, by.var = "ID", varmixt.meth = FALSE, 
+    function.trt = NULL, by.var = "ID", varmixt.meth = TRUE, 
     header = TRUE, sep = "\t", sep.write = "\t", dec.write = ".", 
     ...) 
 {
@@ -245,7 +245,7 @@ function (fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.",
             meth))
         PvalueAdj <- data.frame(GenFic, Delta, VarByGene1, VarByGene2, 
             PooledVar, NbObs1, NbObs2, resvm$tau, VarianceVM = resvm$VM, 
-            StatOfTestVM = teststatVM, PvalueVM = pval.vm, resultatVM)
+            StatOfTestVM = teststatVM, PValueVM = pval.vm, resultatVM)
         names(PvalueAdj) <- sub("X", "tau", names(PvalueAdj))
         write.table(PvalueAdj, file = paste("VM-Complete", fileOUT, 
             sep = ""), row.names = FALSE, sep = sep.write, dec = dec.write)

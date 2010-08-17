@@ -1,4 +1,4 @@
-`rowVars` <-
+rowVars <-
 function(x, ...) {
  n <- NCOL(x)
  newn <- n-rowSums(is.na(x))

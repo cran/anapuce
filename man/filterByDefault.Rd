@@ -6,7 +6,9 @@
                                by deleting spots with flags equal to \emph{flag0} (-100 by default).
 }
 \usage{
-filterByDefault(fileIN, flag0, m, filter.fic = filter.fic, filter.var = filter.var, sep = sep, sep.write = sep.write, dec.write = dec.write, ...)
+filterByDefault(fileIN, flag0, m, filter.fic = filter.fic, 
+filter.var = filter.var, sep = sep, sep.write = sep.write, 
+dec.write = dec.write, ...)
 }
 
 \arguments{

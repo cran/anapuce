@@ -6,7 +6,12 @@
   computes lists of differentially expressed genes according different multiple testing procedures.
 }
 \usage{
-DiffAnalysis.unpaired(fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "cond2.", fileOUT = "ListOfGenes.txt", fileDelete = "GenesOutOfAnalysis.txt", procs = c("bonferroni", "BH"), alpha = c(0.05, 0.05), fileID = NULL, function.trt = NULL, by.var = "ID", varmixt.meth = FALSE, header = TRUE, sep = "\t", sep.write = "\t", dec.write = ".", ...)
+DiffAnalysis.unpaired(fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", 
+cond2 = "cond2.", fileOUT = "ListOfGenes.txt", 
+fileDelete = "GenesOutOfAnalysis.txt", procs = c("bonferroni", "BH"),
+alpha = c(0.05, 0.05), fileID = NULL, function.trt = NULL, 
+by.var = "ID", varmixt.meth = TRUE, header = TRUE, sep = "\t", 
+sep.write = "\t", dec.write = ".", ...)
 }
 
 \arguments{
@@ -53,8 +58,12 @@ DiffAnalysis.unpaired(fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", cond2 = "
 \author{ J. Aubert }
 
 \seealso{ \code{\link{p.adjust}},  \code{\link{MeanBySpot}},  \code{\link{DiffAnalysis}} }
-\examples{
 
+\examples{
+data(apo)
+resApo <- DiffAnalysis.unpaired(apo,n=1,ind.array=1:8,varmixt.meth=TRUE)
+# Histogramm of the raw-pvalues
+# hist(resApo$PValueVM)
 }
 
 \keyword{ programming }

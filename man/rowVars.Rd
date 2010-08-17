@@ -16,7 +16,7 @@ rowVars(x, ...)
 This function is equivalent tu use of apply with FUN = var with MARGIN = 1, but is a lot faster.
 }
 \value{
-A numeric or complex array of suitable siez, or a vector if the result is one-dimensional.
+A numeric or complex array of suitable size, or a vector if the result is one-dimensional.
 }
 \seealso{ \code{\link{rowSums}}, \code{\link{rowMeans}}, \code{\link{apply}}  }
 \keyword{  internal}

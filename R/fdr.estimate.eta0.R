@@ -1,4 +1,4 @@
-`fdr.estimate.eta0` <-
+fdr.estimate.eta0 <-
 function(p,
     method=c("conservative", "adaptive", "bootstrap", "smoother"),
     lambda=seq(0,0.95,0.05) )

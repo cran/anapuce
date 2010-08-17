@@ -1,4 +1,4 @@
-`est.varmixt` <-
+est.varmixt <-
 function(VAR,Kmax,dfreedom)
 { 
  nmixt<-1

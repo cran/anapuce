@@ -1,4 +1,4 @@
-`FileChoice` <-
+FileChoice <-
 function(pattern=NULL){
     fic1     <- file.choose()
     datapath <- dirname(fic1)

@@ -1,4 +1,4 @@
-`filterByDefault` <-
+filterByDefault <-
 function(fileIN,flag0,m,filter.fic=filter.fic,filter.var=filter.var,sep=sep,sep.write=sep.write,dec.write=dec.write,...)
 {
   options(warn = -1)

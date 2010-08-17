@@ -12,12 +12,6 @@ fonctionMobile(x, FUN, lag)
   \item{FUN }{  }
   \item{lag }{  }
 }
-\details{
-}
-\value{
- }
 \author{ J. Aubert }
-
-\seealso{ }
 
 \keyword{ internal }

@@ -11,8 +11,7 @@ FileChoice(pattern = NULL)
 \arguments{
   \item{pattern     }{ an optional \link{regular expression}. Only file names which match the regular expression will be returned. }
 }
-\details{
- }
+
 \value{
   A vector containing the names of the files to analyze
 }

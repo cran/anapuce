@@ -5,7 +5,8 @@
 This function calculates the LBI (Label Bias Index) for two self-self hybridization microarrays.
 }
 \usage{
-LBI(infile, name.M = "M.norm", ind.array = 1:2, graph = TRUE, graphout = "FigM1M2")
+LBI(infile, name.M = "M.norm", ind.array = 1:2, graph = TRUE,
+graphout = "FigM1M2")
 }
 \arguments{
   \item{infile      }{ input data file with normalized log-ratio base 2.}

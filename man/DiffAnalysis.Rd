@@ -6,7 +6,12 @@
   and computes lists of differentially expressed genes according different multiple testing procedures.
 }
 \usage{
-DiffAnalysis(fileIN = "resNorm.txt", n = 3, ind.array = 1:2, name.A = "A", name.M = "M.norm", fileOUT = "ListOfGenes.txt", fileDelete = "GenesOutOfAnalysis.txt", procs = c("bonferroni", "BH"), alpha = c(0.05, 0.05), dyeswap = TRUE, indDS = c(2), fileID = NULL, function.trt = NULL, by.var = "ID", varmixt.meth = FALSE, header = TRUE, sep = "\t", sep.write = "\t", dec.write = ".", ...)
+DiffAnalysis(fileIN = "resNorm.txt", n = 3, ind.array = 1:2, name.A = "A", 
+name.M = "M.norm", fileOUT = "ListOfGenes.txt", 
+fileDelete = "GenesOutOfAnalysis.txt", procs = c("bonferroni", "BH"), 
+alpha = c(0.05, 0.05), dyeswap = TRUE, indDS = c(2), fileID = NULL, 
+function.trt = NULL, by.var = "ID", varmixt.meth = TRUE, header = TRUE, 
+sep = "\t", sep.write = "\t", dec.write = ".", ...)
 }
 
 \arguments{
@@ -55,5 +60,12 @@ DiffAnalysis(fileIN = "resNorm.txt", n = 3, ind.array = 1:2, name.A = "A", name.
 \author{ J. Aubert }
 
 \seealso{ \code{\link{p.adjust}},  \code{\link{MeanBySpot}},  \code{\link{DiffAnalysis.unpaired}} }
+\examples{
+data(spleen)
+resSpleen <- DiffAnalysis(spleen,n=1,ind.array=1:6,name.A="A.",name.M="M.",
+varmixt.meth=TRUE,dyeswap=TRUE,indDS=c(2,4,6))
+# Histogramm of the raw-pvalues
+# hist(resSpleen$PValueVM)
+}
 \keyword{ programming }
 

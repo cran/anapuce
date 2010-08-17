@@ -1,4 +1,4 @@
-`LocalFDR` <-
+LocalFDR <-
 function(dataf = dataf, graph = TRUE, method = NULL,lambda0 = 0.5, smoothing="1", thres=c(0.01,0.05,0.10,0.20), mm=c(3,5,15,NA)) {
 
 # We ordered the pvalues

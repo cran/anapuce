@@ -6,7 +6,10 @@
   a block effect correction via the subtraction of the median by block if there is a Block column.
 }
 \usage{
-normalisation(fileIN = NULL, Red = "F635.Median", Green = "F532.Median", n = 3, flag = -100, graph = TRUE, filter.function = filterByDefault, filter.fic = NULL, filter.var = NULL, sep.write = "\t", dec.write = ".", header = TRUE, sep = "\t", skip = 0, ...)
+normalisation(fileIN = NULL, Red = "F635.Median", Green = "F532.Median",
+n = 3, flag = -100, graph = TRUE, filter.function = filterByDefault, 
+filter.fic = NULL, filter.var = NULL, sep.write = "\t", dec.write = ".",
+header = TRUE, sep = "\t", skip = 0, ...)
 }
 \arguments{
   \item{fileIN          }{ on optional regular expression contained in names of the files to analyze}

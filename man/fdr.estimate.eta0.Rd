@@ -2,8 +2,8 @@
 \alias{fdr.estimate.eta0}
 \title{Estimate the Proportion of Null p-Values}
 \usage{
-fdr.estimate.eta0(p, method=c("conservative", "adaptive", "bootstrap", "smoother"),
-    lambda=seq(0,0.95,0.05) )
+fdr.estimate.eta0(p, method=c("conservative", "adaptive", "bootstrap",
+ "smoother"), lambda=seq(0,0.95,0.05) )
 }
 \description{
   \code{fdr.estimate.eta0} estimates the proportion eta0 of null p-values in a given
@@ -56,9 +56,9 @@ approach in Storey and Tibshirani (2003).
 }
 \author{
   Konstantinos Fokianos (\url{http://www.ucy.ac.cy/~fokianos/}) and
-  Korbinian Strimmer (\url{http://www.stat.uni-muenchen.de/~strimmer/}).
+  Korbinian Strimmer.
   
-  Adapted in part from S-PLUS code by  Y. Benjamini (\url{http://www.math.tau.ac.il/~roee/FDR_Splus.txt})
-  and R code from J.D. Storey (\url{http://faculty.washington.edu/~jstorey/}). 
+  Adapted in part from S-PLUS code by  Y. Benjamini
+  and R code from J.D. Storey (\url{http://genomics.princeton.edu/storeylab/}). 
 }
 \keyword{htest}

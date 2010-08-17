@@ -32,6 +32,4 @@ Delmar P, Robin S, Daudin J.J (2005), VarMixt: efficient variance modelling for 
 \author{ M-L Martin-Magniette and J. Aubert }
 
 \seealso{ \code{\link{DiffAnalysis}},\code{\link{DiffAnalysis.unpaired}} }
-\examples{
-}
 \keyword{ programming }

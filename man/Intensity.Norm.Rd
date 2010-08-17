@@ -5,7 +5,9 @@
   Computes normalized intensity for each channel and each array from the file containing normalized data.
   }
 \usage{
-Intensity.Norm(fileIN = "resNorm.txt", n = 3, ind.array = NULL, name.A = "A", name.M = "M.norm", sep = "\t", center = FALSE, log.transf = TRUE, ...)
+Intensity.Norm(fileIN = "resNorm.txt", n = 3, ind.array = NULL, 
+name.A = "A", name.M = "M.norm", sep = "\t", center = FALSE, 
+log.transf = TRUE, ...)
 }
 \arguments{
   \item{fileIN      }{ input dataframe. }
@@ -17,8 +19,6 @@ Intensity.Norm(fileIN = "resNorm.txt", n = 3, ind.array = NULL, name.A = "A", na
   \item{center      }{ logical indicating wether data will be centered by array. }
   \item{log.transf  }{ logical indicating wether data will stay log-transformed. }
   \item{\dots}{ Further arguments to be passed to read.table. }
-}
-\details{
 }
 \value{
   A R dataframe containing the n first columns of the input dataframe and the "normalized" intensity 

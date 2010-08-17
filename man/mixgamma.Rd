@@ -20,9 +20,6 @@ mixgamma(VAR, dfreedom, var.init, pi.init, nmixt, stop.crit , display = TRUE, ni
   \item{criterion   }{ criterion for the convergence of the EM algorithm : either "likelihood" 
                  for criterion base on loglikelihood either "parameter". }
 }
-\details{
-  
-}
 \value{
   a LIST with the following components :
   \item{BIC.crit}{value of the BIC criterion}
@@ -34,11 +31,7 @@ mixgamma(VAR, dfreedom, var.init, pi.init, nmixt, stop.crit , display = TRUE, ni
   \item{VM2     }{the variance attributed to each gene according to the MAP rule - Delmar et al. (2005) \emph{JRSS}}
   \item{VM      }{the variance attributed to each gene taking into account the tau values - Delmar et al. (2005) \emph{Bioinformatics}} 
 }
-\references{ }
-\author{ Paul Delmar and M-L Martin-Magniette}
-\note{ 
-}
+\author{ P. Delmar and M.-L. Martin-Magniette}
+
 \seealso{ \code{\link{est.varmixt}}}
-\examples{
-  }
 \keyword{ internal }

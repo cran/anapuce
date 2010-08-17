@@ -1,4 +1,4 @@
-`fonctionMobile` <-
+fonctionMobile <-
 function(x, FUN, lag) 
 { 
         FUN=match.fun(FUN) 

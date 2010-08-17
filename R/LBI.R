@@ -1,4 +1,4 @@
-`LBI` <-
+LBI <-
 function(infile,name.M="M.norm",ind.array=1:2,graph=TRUE,graphout="FigM1M2") {
 
 ind <- which(names(infile) %in% paste(name.M,ind.array,sep=""))
@@ -23,7 +23,7 @@ png(file=paste(graphout,".png",sep=""))
 plot(infile[,ind[1]],infile[,ind[2]],xlim=c(-3,3),ylim=c(-3,3),xlab="log2(R1/G1)",ylab="log2(R2/G2)")
 dev.off()
 }
-# (c) 2007 Institut National de la Recherche Agronomique
+# (c) 2010 Institut National de la Recherche Agronomique
  
 }
 

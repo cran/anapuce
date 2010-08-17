@@ -4,7 +4,8 @@
 \description{Estimation of local false discovery rates
 }
 \usage{
-LocalFDR(dataf = dataf, graph = TRUE, method = NULL, lambda0 = 0.5, smoothing = "1", thres = c(0.01, 0.05, 0.1, 0.2), mm = c(3, 5, 15, NA))
+LocalFDR(dataf = dataf, graph = TRUE, method = NULL, lambda0 = 0.5, 
+smoothing = "1", thres = c(0.01, 0.05, 0.1, 0.2), mm = c(3, 5, 15, NA))
 }
 
 \arguments{

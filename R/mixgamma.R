@@ -1,4 +1,4 @@
-`mixgamma` <-
+mixgamma <-
 function (VAR, dfreedom, var.init, pi.init, nmixt, stop.crit, 
     display = TRUE, niter.max = 50000, criterion = criterion) 
 {
