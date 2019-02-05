@@ -6,11 +6,11 @@
   computes lists of differentially expressed genes according different multiple testing procedures.
 }
 \usage{
-DiffAnalysis.unpaired(fileIN = "resNorm.txt", n = 3, cond1 = "cond1.", 
-cond2 = "cond2.", fileOUT = "ListOfGenes.txt", 
+DiffAnalysis.unpaired(fileIN = "resNorm.txt", n = 3, cond1 = "cond1.",
+cond2 = "cond2.", fileOUT = "ListOfGenes.txt",
 fileDelete = "GenesOutOfAnalysis.txt", procs = c("bonferroni", "BH"),
-alpha = c(0.05, 0.05), fileID = NULL, function.trt = NULL, 
-by.var = "ID", varmixt.meth = TRUE, header = TRUE, sep = "\t", 
+alpha = c(0.05, 0.05), fileID = NULL, function.trt = NULL,
+by.var = "ID", varmixt.meth = TRUE, header = TRUE, sep = "\t",
 sep.write = "\t", dec.write = ".", ...)
 }
 
@@ -35,24 +35,24 @@ sep.write = "\t", dec.write = ".", ...)
 }
 \details{
   This function performs a differential analysis in the gene-specific and homoscedastic cases.
-  
+
   If \emph{varmixt.meth = TRUE}, the method used is the method proposed by Delmar et al. (2005), (the same as coded in the vm.analysis function from the varmixt package.)
 
 }
 \value{
   By default these following files are created
-  
+
   - one list of differentially expressed genes by procedure
 
   - The list of withdrawn genes
 
   - The list of all the genes
- 
+
   An R object is returned if function return value is assigned.
 
 }
 \references{ Delmar, P., Robin, S. and Daudin, J.J., (2005), VarMixt: efficient variance modelling for the differential analysis of replicated gene expression data, \emph{Bioinformatics}, \bold{21},(4), 502--8
-   
+
    Dudoit, S., Yang, Y. H., Callow, M. J. and Speed, T.P., (2002), Statistical methods for identifying differentially expressed genes in replicated cdna microarray experiments, \emph{Statisticia Sinica}, \bold{12}, 111--139
  }
 \author{ J. Aubert }
@@ -61,7 +61,8 @@ sep.write = "\t", dec.write = ".", ...)
 
 \examples{
 data(apo)
-resApo <- DiffAnalysis.unpaired(apo,n=1,ind.array=1:8,varmixt.meth=TRUE)
+# Analysis on the first 100 genes
+resApo <- DiffAnalysis.unpaired(apo[1:100,], n = 1, ind.array = 1:8, varmixt.meth = TRUE)
 # Histogramm of the raw-pvalues
 # hist(resApo$PValueVM)
 }

@@ -7,10 +7,10 @@ fdr.estimate.eta0(p, method=c("conservative", "adaptive", "bootstrap",
 }
 \description{
   \code{fdr.estimate.eta0} estimates the proportion eta0 of null p-values in a given
-  vector of p-values. This quantity is an important parameter 
+  vector of p-values. This quantity is an important parameter
   when controlling  the false discovery rate (FDR).  A conservative choice is
   eta0 = 1 but a choice closer to the true value will increase efficiency
-  and power 
+  and power
   - see   Benjamini and Hochberg (1995, 2000) and Storey (2002) for details.
 }
 
@@ -32,11 +32,11 @@ employs the method from Storey (2002), and "smoother" uses the smoothing spline
 approach in Storey and Tibshirani (2003).
 }
 \value{
-  The estimated proportion eta0 of null p-values. 
+  The estimated proportion eta0 of null p-values.
 }
 
 \references{
- 
+
  \emph{"conservative" procedure:} Benjamini, Y., and Y. Hochberg (1995)  Controlling the false
  discovery rate: a practical and powerful approach to multiple testing.
  \emph{J. Roy. Statist. Soc. B}, \bold{57}, 289--300.
@@ -44,21 +44,20 @@ approach in Storey and Tibshirani (2003).
  \emph{"adaptive" procedure:} Benjamini, Y., and Y. Hochberg (2000) The adaptive control
  of the false discovery rate in multiple hypotheses testing with independent statistics.
  \emph{J. Behav. Educ. Statist.}, \bold{25}, 60--83.
- 
+
  \emph{"bootstrap" procedure:} Storey, J. D. (2002) A direct approach to false
  discovery rates.
  \emph{J. Roy. Statist. Soc. B.}, \bold{64}, 479--498.
- 
+
  \emph{"bootstrap" procedure:} Storey, J. D., and R. Tibshirani (2003)
-  Statistical significance for genome-wide experiments. 
+  Statistical significance for genome-wide experiments.
  \emph{Proc. Nat. Acad. Sci. USA}, \bold{100}, 9440-9445.
 
 }
 \author{
-  Konstantinos Fokianos (\url{http://www.ucy.ac.cy/~fokianos/}) and
-  Korbinian Strimmer.
-  
+  Konstantinos Fokianos and Korbinian Strimmer.
+
   Adapted in part from S-PLUS code by  Y. Benjamini
-  and R code from J.D. Storey (\url{http://genomics.princeton.edu/storeylab/}). 
+  and R code from J.D. Storey (\url{http://genomics.princeton.edu/storeylab/}).
 }
 \keyword{htest}

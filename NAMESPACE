@@ -1,5 +1,7 @@
-# Default NAMESPACE created by R
-# Remove the previous line if you edit this file
-
-# Export all names
-exportPattern(".")
+  exportPattern("^[[:alpha:]]+")
+  importFrom("grDevices", "dev.off", "pdf", "png")
+  importFrom("graphics", "boxplot", "lines", "plot")
+  importFrom("stats", "aggregate", "bartlett.test", "dgamma", "isoreg",
+             "loess", "lowess", "median", "p.adjust", "pnorm", "predict",
+             "pt", "qchisq", "smooth.spline", "var")
+  importFrom("utils", "read.table", "write.table")

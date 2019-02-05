@@ -6,7 +6,6 @@
 An example data set for paired data analysis.
 A dataframe with the normalized Spleen data set as used in the original article.  
 }
-\usage{data(spleen)}
 \format{
 spleen is a dataframe. The first column contains gene names. The 6 columns A.1 to A.6 contain normalized mean log-intensity
 and the 6 columns M.1 to M.6 correspond to normalized log-ratio
@@ -21,4 +20,4 @@ data(spleen)
 # Histogramm of the raw-pvalues
 # hist(resSpleen$PValueVM)
 }
-\keyword{datasets}
+\keyword{ datasets }
